@@ -27,7 +27,7 @@ public class Player extends Actor {
     public Player(Stage stage){
         texture = new Texture(Gdx.files.internal("spaceship.png"));
         sprite = new Sprite(texture);
-        sprite.setOriginCenter();
+        sprite.setOrigin(sprite.getWidth()/2,sprite.getHeight()/2);
 
         setTouchable(Touchable.enabled);
 
@@ -50,7 +50,7 @@ public class Player extends Actor {
     }
 
     public void handleControls(float mouseX, float mouseY){
-        float rotation = MathUtils.atan2(mouseY - sprite.getY(),mouseX -sprite.getX())*MathUtils.radiansToDegrees;
+        float rotation = MathUtils.atan2(mouseY - sprite.getOriginY(),mouseX -sprite.getOriginX())*MathUtils.radiansToDegrees;
         sprite.setRotation(rotation);
 
     }
